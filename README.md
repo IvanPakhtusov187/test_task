@@ -1,34 +1,38 @@
 # Admin Products App
 
-Small admin-like web app built with React + TypeScript + Redux Toolkit + RTK Query + Ant Design.
+Небольшое административное веб-приложение, разработанное с использованием **React + TypeScript + Redux Toolkit + RTK Query + Ant Design**.
 
-## Run locally
+## Запуск локально
 
-1. Install dependencies:
-   - `npm install`
-2. Start dev server:
-   - `npm run dev`
-3. Open in latest Google Chrome:
-   - `http://localhost:5173`
+Установите зависимости:
 
-## Implemented features
+npm install
 
-- Auth flow with public `/login` and protected `/products`
-- Login form with React Hook Form + Zod validation
-- Remember me behavior:
-  - ON: token stored in `localStorage`
-  - OFF: token stored in `sessionStorage`
-- Products table with:
-  - API list fetch (`/products`)
-  - API search (`/products/search?q=...`) with 300ms debounce
-  - Sorting (Price, Rating, Title) with stable client-side fallback
-  - Red rating text when `rating < 3`
-- Add Product modal (local-only insert, no API save)
-- RTK Query caching and request loading/error states
+Запустите dev-сервер:
 
-## Project structure
+npm run dev
 
-```text
+Откройте в последней версии **Google Chrome**:
+
+http://localhost:5173
+
+## Реализованный функционал
+
+- Поток авторизации с публичной страницей **/login** и защищенной страницей **/products**
+- Форма входа с **React Hook Form + Zod** для валидации
+- Логика **Remember me**:
+  - **Включено** → токен сохраняется в `localStorage`
+  - **Выключено** → токен сохраняется в `sessionStorage`
+- Таблица товаров с:
+  - загрузкой списка из API (`/products`)
+  - поиском через API (`/products/search?q=...`) с **debounce 300мс**
+  - сортировкой (Price, Rating, Title) с устойчивой клиентской сортировкой
+  - отображением рейтинга **красным цветом**, если `rating < 3`
+- Модальное окно **Add Product** (добавление только локально, без сохранения в API)
+- Кэширование запросов и состояния загрузки/ошибок через **RTK Query**
+
+## Структура проекта
+
 src/
   app/
     router/
@@ -53,24 +57,33 @@ src/
   pages/
     LoginPage/
     ProductsPage/
-```
 
-## Key decisions
+## Основные архитектурные решения
 
-- **RTK Query**: chosen for first-class caching, loading states, and endpoint co-location with Redux Toolkit.
-- **Ant Design**: provides production-ready form/table/modal components that fit admin use-cases.
-- **React Hook Form + Zod**: lightweight form state management with strict schema-based validation and typed form values.
-- **Feature/entity/shared modularization**: keeps domain code isolated and easy to scale.
+**RTK Query**  
+Выбран из-за встроенного кэширования, управления состояниями загрузки и удобной интеграции с Redux Toolkit.
 
-## API notes
+**Ant Design**  
+Используется для готовых production-компонентов (формы, таблицы, модальные окна), которые хорошо подходят для административных интерфейсов.
 
-- Auth endpoint: `POST https://dummyjson.com/auth/login`
-- Products endpoints:
-  - `GET https://dummyjson.com/products`
-  - `GET https://dummyjson.com/products/search?q=...`
+**React Hook Form + Zod**  
+Легковесное управление состоянием формы с **строгой схемной валидацией** и типизацией значений формы.
 
-## AI usage
+**Модульная структура feature/entity/shared**  
+Позволяет изолировать доменные части приложения и облегчает масштабирование проекта.
 
-- Model: GPT-5.3 Codex (Cursor coding agent)
-- Prompts used:
-  - Initial implementation prompt provided by user (this exact prompt)
+## API
+
+Авторизация:
+
+POST https://dummyjson.com/auth/login
+
+Товары:
+
+GET https://dummyjson.com/products  
+GET https://dummyjson.com/products/search?q=...
+
+## Использование AI
+
+Модель:  
+**GPT-5.3 Codex (Cursor coding agent)**
